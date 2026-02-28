@@ -254,9 +254,9 @@ struct elem {
         return key == other.key;
     }
     elem() : key(0), val() {}
-    elem(size_t k, DynamicArray<char> v) : key(k), val(std::move(v)) {}
+    elem(size_t k, DynamicArray<char> v) noexcept : key(k), val(std::move(v)) {}
     elem(const elem& other) : key(other.key), val(other.val) {}
-    elem(elem&& other) : key(other.key), val(std::move(other.val)) {}
+    elem(elem&& other) noexcept : key(other.key), val(std::move(other.val)) {}
     elem operator =(const elem& other) {
         key = other.key;
         val = other.val;
